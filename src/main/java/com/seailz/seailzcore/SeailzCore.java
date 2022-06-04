@@ -3,6 +3,7 @@ package com.seailz.seailzcore;
 import com.seailz.seailzcore.commads.CommandFly;
 import com.seailz.seailzcore.core.Locale;
 import com.seailz.seailzcore.core.Logger;
+import com.seailz.seailzcore.listeners.PlayerConnectionListener;
 import games.negative.framework.BasePlugin;
 import lombok.Getter;
 import lombok.Setter;
@@ -41,7 +42,7 @@ public final class SeailzCore extends BasePlugin {
                 break;
             case LISTENER:
                 registerListeners(
-                        // Register Listeners
+                        new PlayerConnectionListener()
                 );
         }
     }

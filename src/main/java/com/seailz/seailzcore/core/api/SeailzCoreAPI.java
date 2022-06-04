@@ -1,8 +1,13 @@
 package com.seailz.seailzcore.core.api;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.seailz.seailzcore.SeailzCore;
 import com.seailz.seailzcore.profile.Profile;
+import com.seailz.seailzcore.profile.expections.NoProfileExistsException;
 import org.bukkit.Bukkit;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -19,12 +24,17 @@ public class SeailzCoreAPI implements SeailzCoreAPIImpl {
      * Get a profile of a player
      * @param player The player's UUID
      * @return The player's profile
-     * @implNote Use this method from {@link SeailzCoreAPI}
      */
     @Override
-    public Profile getProfile(UUID player) {
-        // TODO: make this method return something
-        return null;
+    public Profile getProfile(UUID player) throws NoProfileExistsException {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.readValue(
+                    new File(SeailzCore.getInstance().getDataFolder(), "/users/" + player), Profile.class
+            );
+        } catch (IOException e) {
+            throw new NoProfileExistsException("No profile exists for the given UUID!");
+        }
     }
 
     /**
@@ -45,7 +55,7 @@ public class SeailzCoreAPI implements SeailzCoreAPIImpl {
      * @param monthBeforeDay Whether the string should show the month before the day, or not.
      * @param timezone The timezone you wish to choose. You may pick any from this website: <b><u>https://en.wikipedia.org/wiki/List_of_tz_database_time_zones</u></b>, under the TZ database name within the table.
      *
-     * @return
+     * @return Something that looks similar to this: <b> 15/12/2022 13:28:42 </b>
      */
     @Override
     public String getFirstJoinNice(UUID player, boolean monthBeforeDay, String timezone) {
