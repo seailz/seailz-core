@@ -2,13 +2,9 @@ package com.seailz.seailzcore;
 
 import com.seailz.seailzcore.core.Locale;
 import com.seailz.seailzcore.core.Logger;
-import com.seailz.seailzcore.core.license.ULicense;
-import com.seailz.seailzcore.core.utils.ConfigUtils;
 import games.negative.framework.BasePlugin;
 import lombok.Getter;
 import lombok.Setter;
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.FileConfiguration;
 
 public final class SeailzCore extends BasePlugin {
 
@@ -23,14 +19,6 @@ public final class SeailzCore extends BasePlugin {
         long start = System.currentTimeMillis();
 
         setInstance(this);
-
-        FileConfiguration license = new ConfigUtils("license").getConfig();
-
-        if (!new ULicense(this, license.getString("license-key"), "https://licenses.seailz.com/api/client", "cac79c8e128cd775297fb454516b6c2c2b0cfdd9").verify()) {
-            Bukkit.getPluginManager().disablePlugin(this);
-            Bukkit.getScheduler().cancelTasks(this);
-            return;
-        }
 
         // Set details and register things
         register(RegisterType.COMMAND);
