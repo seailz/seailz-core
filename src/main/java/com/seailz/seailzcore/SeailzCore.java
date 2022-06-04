@@ -1,5 +1,6 @@
 package com.seailz.seailzcore;
 
+import com.seailz.seailzcore.commads.CommandFly;
 import com.seailz.seailzcore.core.Locale;
 import com.seailz.seailzcore.core.Logger;
 import games.negative.framework.BasePlugin;
@@ -35,7 +36,7 @@ public final class SeailzCore extends BasePlugin {
         switch (type) {
             case COMMAND:
                 registerCommands(
-                        // Insert commands
+                        new CommandFly()
                 );
                 break;
             case LISTENER:
