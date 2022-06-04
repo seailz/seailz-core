@@ -3,7 +3,6 @@ package com.seailz.seailzcore.listeners;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.seailz.seailzcore.SeailzCore;
 import com.seailz.seailzcore.profile.Profile;
-import com.sun.tools.javac.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -12,6 +11,8 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class PlayerConnectionListener implements Listener {
 
@@ -28,7 +29,7 @@ public class PlayerConnectionListener implements Listener {
         if (!profileFile.exists()) {
             // File doesn't exist, lets make one!
             Profile newProfile = new Profile(
-                    e.getPlayer().getName(), p.getUniqueId(), new ArrayList<>(List.of(p.getName()))
+                    e.getPlayer().getName(), p.getUniqueId(), new ArrayList<>(Arrays.asList(p.getName()))
             );
 
             // Save the profile into JSON
@@ -48,6 +49,11 @@ public class PlayerConnectionListener implements Listener {
 
             // If nothing changed, no need to update the JSON file
         }
+    }
+
+
+    private ArrayList<String> listFromLines(String... lines) {
+        return new ArrayList<>(Arrays.asList(lines));
     }
 
 }
