@@ -6,8 +6,11 @@ import games.negative.framework.command.Command;
 import games.negative.framework.command.annotation.CommandInfo;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.PluginManager;
 
+/**
+ * Gamemode Command
+ * @author Seailz
+ */
 @CommandInfo(
         name = "fly",
         permission = "seailzcore.commands.fly"
