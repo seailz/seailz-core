@@ -28,6 +28,7 @@ public class PlayerConnectionListener implements Listener {
         // Check if the player's profile exists
         if (!profileFile.exists()) {
             // File doesn't exist, lets make one!
+            profileFile.mkdir();
             Profile newProfile = new Profile(
                     e.getPlayer().getName(), p.getUniqueId(), new ArrayList<>(Arrays.asList(p.getName()))
             );
