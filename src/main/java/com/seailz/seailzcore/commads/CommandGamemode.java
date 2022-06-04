@@ -39,12 +39,12 @@ public class CommandGamemode extends Command {
 class SubGamemodeSurvival extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, String[] args) {
-        if (getPlayer(args[0]) == null && args.length == 2)
+        if (getPlayer(args[1]) == null && args.length == 3)
             Locale.INVALID_PLAYER.send(sender);
-        else if (getPlayer(args[0]) != null && args.length == 2)
-            new PlayerManager(getPlayer(args[0])).setGamemode(GameMode.SURVIVAL);
+        else if (getPlayer(args[1]) != null && args.length == 3)
+            new PlayerManager(getPlayer(args[1])).setGamemode(GameMode.SURVIVAL);
 
-        if (args.length == 1) {
+        if (args.length == 2) {
             if (!(sender instanceof Player)) {
                 FrameworkMessage.COMMAND_CANNOT_USE_THIS_AS_CONSOLE.send(sender);
                 return;
@@ -64,12 +64,12 @@ class SubGamemodeSurvival extends SubCommand {
 class SubGamemodeCreative extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, String[] args) {
-        if (getPlayer(args[0]) == null && args.length == 2)
+        if (getPlayer(args[1]) == null && args.length == 3)
             Locale.INVALID_PLAYER.send(sender);
-        else if (getPlayer(args[0]) != null && args.length == 2)
-            new PlayerManager(getPlayer(args[0])).setGamemode(GameMode.CREATIVE);
+        else if (getPlayer(args[1]) != null && args.length == 3)
+            new PlayerManager(getPlayer(args[1])).setGamemode(GameMode.CREATIVE);
 
-        if (args.length == 1) {
+        if (args.length == 2) {
             if (!(sender instanceof Player)) {
                 FrameworkMessage.COMMAND_CANNOT_USE_THIS_AS_CONSOLE.send(sender);
                 return;
@@ -88,12 +88,12 @@ class SubGamemodeCreative extends SubCommand {
 class SubGamemodeAdventure extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, String[] args) {
-        if (getPlayer(args[0]) == null && args.length == 2)
+        if (getPlayer(args[1]) == null && args.length == 3)
             Locale.INVALID_PLAYER.send(sender);
-        else if (getPlayer(args[0]) != null && args.length == 2)
-            new PlayerManager(getPlayer(args[0])).setGamemode(GameMode.ADVENTURE);
+        else if (getPlayer(args[1]) != null && args.length == 3)
+            new PlayerManager(getPlayer(args[1])).setGamemode(GameMode.ADVENTURE);
 
-        if (args.length == 1) {
+        if (args.length == 2) {
             if (!(sender instanceof Player)) {
                 FrameworkMessage.COMMAND_CANNOT_USE_THIS_AS_CONSOLE.send(sender);
                 return;
@@ -112,12 +112,12 @@ class SubGamemodeAdventure extends SubCommand {
 class SubGamemodeSpectator extends SubCommand {
     @Override
     public void onCommand(CommandSender sender, String[] args) {
-        if (getPlayer(args[0]) == null && args.length == 2)
+        if (getPlayer(args[1]) == null && args.length == 3)
             Locale.INVALID_PLAYER.send(sender);
-        else if (getPlayer(args[0]) != null && args.length == 2)
-            new PlayerManager(getPlayer(args[0])).setGamemode(GameMode.SPECTATOR);
+        else if (getPlayer(args[1]) != null && args.length == 3)
+            new PlayerManager(getPlayer(args[1])).setGamemode(GameMode.SPECTATOR);
 
-        if (args.length == 1) {
+        if (args.length == 2) {
             if (!(sender instanceof Player)) {
                 FrameworkMessage.COMMAND_CANNOT_USE_THIS_AS_CONSOLE.send(sender);
                 return;
