@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class PlayerConnectionListener implements Listener {
 
@@ -51,10 +50,4 @@ public class PlayerConnectionListener implements Listener {
             // If nothing changed, no need to update the JSON file
         }
     }
-
-
-    private ArrayList<String> listFromLines(String... lines) {
-        return new ArrayList<>(Arrays.asList(lines));
-    }
-
 }
