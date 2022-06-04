@@ -10,6 +10,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -18,7 +19,7 @@ public class PlayerConnectionListener implements Listener {
     ObjectMapper objectMapper = new ObjectMapper();
 
     @EventHandler
-    public void playerJoin(PlayerJoinEvent e) throws IOException {
+    public void playerJoin(PlayerJoinEvent e) throws IOException, SQLException {
         Player p = e.getPlayer();
 
         // Profile Management
@@ -27,14 +28,19 @@ public class PlayerConnectionListener implements Listener {
         // Check if the player's profile exists
         if (!profileFile.exists()) {
             // File doesn't exist, lets make one!
-            profileFile.mkdir();
+            profileFile.createNewFile();
             Profile newProfile = new Profile(
                     e.getPlayer().getName(), p.getUniqueId(), new ArrayList<>(Arrays.asList(p.getName()))
             );
 
             // Save the profile into JSON
             objectMapper.writeValue(profileFile, newProfile);
-        } else {
+
+            // MySQL
+            newProfile.saveToDatabase();
+        }
+
+        /*else {
             // Update the profile
             Profile profile = objectMapper.readValue(profileFile, Profile.class);
             // If the old profile's previous names doesn't contain the player's current name, we need to add it.
@@ -45,9 +51,8 @@ public class PlayerConnectionListener implements Listener {
 
                 // Write it
                 objectMapper.writeValue(profileFile, profile);
-            }
+            } */
 
             // If nothing changed, no need to update the JSON file
         }
     }
-}
