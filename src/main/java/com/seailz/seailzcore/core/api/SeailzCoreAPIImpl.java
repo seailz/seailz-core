@@ -1,6 +1,7 @@
 package com.seailz.seailzcore.core.api;
 
 import com.seailz.seailzcore.profile.Profile;
+import com.seailz.seailzcore.profile.expections.NoProfileExistsException;
 
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ public interface SeailzCoreAPIImpl {
      * @return The player's profile
      * @implNote Use this method from {@link SeailzCoreAPI}
      */
-    Profile getProfile(UUID player);
+    Profile getProfile(UUID player) throws NoProfileExistsException;
 
     /**
      * Get a players first join date
