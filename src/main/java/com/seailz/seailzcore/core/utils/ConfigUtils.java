@@ -1,6 +1,6 @@
-package club.icegames.spigotplugintemplate.core.utils;
+package com.seailz.seailzcore.core.utils;
 
-import club.icegames.spigotplugintemplate.PluginTemplate;
+import com.seailz.seailzcore.SeailzCore;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
@@ -15,7 +15,7 @@ public class ConfigUtils {
     }
 
     public FileConfiguration getConfig() {
-        File file = new File(PluginTemplate.getInstance().getDataFolder(), this.name + ".yml");
+        File file = new File(SeailzCore.getInstance().getDataFolder(), this.name + ".yml");
         return YamlConfiguration.loadConfiguration(file);
     }
 }

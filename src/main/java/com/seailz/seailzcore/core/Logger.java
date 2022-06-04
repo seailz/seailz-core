@@ -1,4 +1,4 @@
-package club.icegames.spigotplugintemplate.core;
+package com.seailz.seailzcore.core;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
