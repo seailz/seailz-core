@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.seailz</groupId>
-    <artifactId>SpigotPluginTemplate</artifactId>
+    <artifactId>SeailzCore</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>SpigotPluginTemplate</name>
+    <name>Seailz Core</name>
 
-    <description>Plugin Template (Change this!)</description>
+    <description>Custom core plugin, created by Seailz!</description>
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,55 +23,31 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.wvengen</groupId>
-                <artifactId>proguard-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
-                        <goals><goal>proguard</goal></goals>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
                         <configuration>
-                            <injar>${project.build.finalName}-jar-with-dependencies.jar</injar>
-                            <outjar>${project.build.finalName}-small.jar</outjar>
-                            <proguardVersion>7.1.0</proguardVersion>
-                            <options>
-                                <option>-allowaccessmodification</option>
-                                <option>-dontoptimize</option>
-                                <option>-dontshrink</option>
-                                <option>-dontnote</option>
-                                <option>-dontwarn</option> <!-- added option to ignore com.sun missing classes -->
-                                <option>-keepattributes Signature</option>
-                            </options>
-                            <libs>
-                                <lib>${java.home}/lib/rt.jar</lib>
-                            </libs>
-                            <dependencies>
-                                <dependency>
-                                    <groupId>com.guardsquare</groupId>
-                                    <artifactId>proguard-base</artifactId>
-                                    <version>7.2.1</version>
-                                    <scope>runtime</scope>
-                                </dependency>
-                                <dependency>
-                                    <groupId>com.guardsquare</groupId>
-                                    <artifactId>proguard-core</artifactId>
-                                    <version>9.0.0</version>
-                                    <scope>runtime</scope>
-                                </dependency>
-                            </dependencies>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
-        <pluginManagement>
-        <plugins>
-        <plugin>
-            <groupId>com.github.wvengen</groupId>
-            <artifactId>proguard-maven-plugin</artifactId>
-            <version>2.5.3</version>
-        </plugin>
-        </plugins>
-        </pluginManagement>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>

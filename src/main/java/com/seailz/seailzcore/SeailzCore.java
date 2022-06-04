@@ -1,20 +1,20 @@
-package club.icegames.spigotplugintemplate;
+package com.seailz.seailzcore;
 
-import club.icegames.spigotplugintemplate.core.Locale;
-import club.icegames.spigotplugintemplate.core.Logger;
-import club.icegames.spigotplugintemplate.core.license.ULicense;
-import club.icegames.spigotplugintemplate.core.utils.ConfigUtils;
+import com.seailz.seailzcore.core.Locale;
+import com.seailz.seailzcore.core.Logger;
+import com.seailz.seailzcore.core.license.ULicense;
+import com.seailz.seailzcore.core.utils.ConfigUtils;
 import games.negative.framework.BasePlugin;
 import lombok.Getter;
 import lombok.Setter;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 
-public final class PluginTemplate extends BasePlugin {
+public final class SeailzCore extends BasePlugin {
 
     @Getter
     @Setter
-    public static PluginTemplate instance;
+    public static SeailzCore instance;
 
     @Override
     public void onEnable() {
