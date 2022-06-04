@@ -22,7 +22,7 @@ public class PlayerConnectionListener implements Listener {
         Player p = e.getPlayer();
 
         // Profile Management
-        File profileFile = new File(SeailzCore.getInstance().getDataFolder(), "/users/" + p.getUniqueId());
+        File profileFile = new File(SeailzCore.getInstance().getDataFolder(), "/users/" + p.getUniqueId() + ".json");
 
         // Check if the player's profile exists
         if (!profileFile.exists()) {
